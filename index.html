@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The English Native Immersion Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #202334 60%, #181B28 100%);
+            min-height: 100vh;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 900px;
+            width: 90%;
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .card {
+            background: #2a2d42;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.4), 0 1.5px 1.5px rgba(78,51,176,0.07);
+            padding: 24px;
+            margin: 12px 0;
+            transition: box-shadow 0.2s ease-in-out;
+        }
+        .text-heading {
+            color: #43C6E9;
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .underwriting {
+            text-align: center;
+            color: #fff;
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        .text-purple-magenta {
+            color: #D085E5;
+        }
+        .text-green-teal {
+            color: #50DBB3;
+        }
+        .text-blue-aqua {
+            color: #43C6E9;
+        }
+        .text-medium-blue-violet {
+            color: #7D97F4;
+        }
+        .border-blue-aqua {
+            border-color: #43C6E9;
+        }
+        .scenario-box {
+            border-left: 5px solid #5B8AF9;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        .scenario-box p {
+            margin: 5px 0;
+        }
+        .scenario-box .english-label {
+            background: linear-gradient(to right, #50DBB3, #43C6E9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+        .scenario-box .portuguese-label {
+            background: linear-gradient(to right, #F9E79F, #F7DC6F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+        /* Different underline colors */
+        .underline-blue {
+            text-decoration: underline;
+            text-decoration-color: #5B8AF9;
+            text-decoration-thickness: 2px;
+        }
+        .underline-green {
+            text-decoration: underline;
+            text-decoration-color: #50DBB3;
+            text-decoration-thickness: 2px;
+        }
+        .underline-purple {
+            text-decoration: underline;
+            text-decoration-color: #D085E5;
+            text-decoration-thickness: 2px;
+        }
+        .underline-orange {
+            text-decoration: underline;
+            text-decoration-color: #FF8C00;
+            text-decoration-thickness: 2px;
+        }
+        .translation-reference {
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+        .translation-reference h4 {
+            color: #50DBB3;
+        }
+        .translation-reference ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .translation-reference li {
+            background: rgba(125, 151, 244, 0.1);
+            padding: 8px 12px;
+            border-radius: 8px;
+            border-left: 3px solid #7D97F4;
+            font-size: 0.9em;
+        }
+        .input-area {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .input-area input {
+            flex-grow: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #5B8AF9;
+            background: #181B28;
+            color: #fff;
+        }
+        .input-area button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #50DBB3;
+            color: #181B28;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .input-area button:hover {
+            background: #43C6E9;
+        }
+        .response-area {
+            display: block;
+            margin-top: 20px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .response-section h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .response-section p {
+            margin: 0;
+            font-size: 1em;
+        }
+        .explanation-box {
+            background: rgba(86, 138, 249, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #5B8AF9;
+            margin-top: 10px;
+        }
+        .explanation-box p {
+            margin: 0;
+            line-height: 1.8em;
+        }
+        .portuguese-explanation {
+            font-weight: bold;
+            color: #F7DC6F;
+        }
+        .association-box {
+            background: rgba(208, 133, 229, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3_px solid #D085E5;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: center;
+        }
+        th, td {
+            text-align: center;
+            padding: 12px;
+            border-bottom: 1px solid #3d415d;
+        }
+        th {
+            background: #34374b;
+        }
+        .circle-container {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .circle-container svg {
+            transform: rotate(-90deg);
+        }
+        .circle-container .bg-circle, .circle-container .progress-circle {
+            fill: none;
+            stroke-width: 6;
+        }
+        .circle-container .bg-circle {
+            stroke: #4a506a;
+        }
+        .circle-container .progress-circle {
+            stroke: #43C6E9;
+            stroke-linecap: round;
+            animation: circle-fill 1s forwards ease-in-out;
+        }
+        @keyframes circle-fill {
+            from { stroke-dashoffset: 251.2; }
+            to { stroke-dashoffset: var(--dash-offset); }
+        }
+        .circle-container .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .animated-instruction {
+            margin-top: -10px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 1.05em;
+            color: #ffffff;
+            animation: pulse-fade 3s infinite ease-in-out;
+        }
+        @keyframes pulse-fade {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+        /* New classes for colored greetings */
+        .morning-color {
+            color: #50DBB3;
+        }
+        .afternoon-color {
+            color: #F7DC6F;
+        }
+        .evening-color {
+            color: #D085E5;
+        }
+        /* New Animated Gradient Box Styles */
+        .animated-gradient-box {
+            position: relative;
+            padding: 2px;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+        .animated-gradient-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 18px;
+            padding: 3px;
+            background: linear-gradient(45deg, #43C6E9, #50DBB3, #D085E5, #F7DC6F, #43C6E9);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            background-size: 400% 400%;
+            animation: animated-gradient-border 8s ease infinite;
+        }
+        @keyframes animated-gradient-border {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .preposition-in {
+            color: #50DBB3;
+            font-weight: bold;
+        }
+        .preposition-on {
+            color: #D085E5;
+            font-weight: bold;
+        }
+        .preposition-at {
+            color: #43C6E9;
+            font-weight: bold;
+        }
+        .scenario-image {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .highlight-card {
+            background: #2a2d42;
+            border-radius: 18px;
+            border: 2px solid #50DBB3;
+            padding: 20px;
+            text-align: center;
+        }
+        .highlight-card h3 {
+            font-size: 1.8em;
+            margin: 0;
+            color: #F7DC6F;
+        }
+        .dialogue-box {
+            background: #34374b;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        .dialogue-box p {
+            margin: 5px 0;
+            font-style: italic;
+        }
+        .dialogue-box .person1 {
+            color: #43C6E9;
+        }
+        .dialogue-box .person2 {
+            color: #50DBB3;
+        }
+        .title-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .title-table th, .title-table td {
+            padding: 12px;
+            border-bottom: 1px solid #3d415d;
+        }
+        .title-table th {
+            background: #34374b;
+            color: #43C6E9;
+        }
+        .title-table tr:hover {
+            background-color: #3d415d;
+        }
+        .title-example {
+            font-style: italic;
+            color: #D085E5;
+        }
+        .title-list {
+            list-style: none;
+            padding: 0;
+        }
+        .title-list-item {
+            margin-bottom: 20px;
+            border-left: 3px solid #5B8AF9;
+            padding-left: 15px;
+        }
+        .title-list-item h4 {
+            margin: 0 0 5px 0;
+            color: #43C6E9;
+            font-weight: bold;
+        }
+        .title-list-item p {
+            margin: 0;
+            line-height: 1.6em;
+        }
+        .title-list-item .example {
+            font-style: italic;
+            color: #D085E5;
+        }
+        /* Custom class for the new answer formatting */
+        .spaced-answer {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px dashed #7D97F4;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            color: #50DBB3;
+        }
+        .detailed-answer-box {
+            background: rgba(208, 133, 229, 0.1);
+            border-left: 3px solid #D085E5;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .detailed-answer-box h4 {
+            color: #D085E5;
+            margin-top: 0;
+        }
+        .new-table-container {
+            margin-top: 30px;
+        }
+        .new-table-container h2 {
+            text-align: center;
+            color: #43C6E9;
+        }
+        .new-table-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .new-table-container th, .new-table-container td {
+            border: 1px solid #3d415d;
+            padding: 12px;
+            text-align: left;
+        }
+        .new-table-container th {
+            background-color: #34374b;
+            color: #50DBB3;
+        }
+        .new-table-container tr:nth-child(even) {
+            background-color: rgba(67, 198, 233, 0.05);
+        }
+        .new-table-container .english-col {
+            color: #F7DC6F;
+        }
+        .new-table-container .portuguese-col {
+            color: #D085E5;
+        }
+        .toc-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .toc-list li {
+            margin: 10px 0;
+        }
+        .toc-list a {
+            color: #50DBB3;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .toc-list a:hover {
+            color: #43C6E9;
+        }
+        .toc-list .toc-sub-item {
+            margin-left: 20px;
+            list-style-type: circle;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="text-heading">The English Native Immersion Project 💡</h1>
+        <p class="underwriting">This program is bespoke to walk through a real and genuine English.</p>
+
+        <div class="card" id="table-of-contents">
+            <h2 class="text-blue-aqua">Table of Contents 📚</h2>
+            <ul class="toc-list">
+                <li><a href="#module1">Part 1: The First Contact - The Greeting 🤝</a></li>
+                <li><a href="#module-hello-special">Special Uses for 'Hello' 📞</a></li>
+                <li><a href="#module2">Part 2: The First Contact - The Question 🗣️</a></li>
+                <li><a href="#module3">Part 3: The First Contact - The Reply 🤝</a>
+                    <ul class="toc-sub-item">
+                        <li><a href="#module3-1">The Formal Greeting - "How do you do?"</a></li>
+                        <li><a href="#module3-2">The Formal Reply - 'Pleased to meet you.'</a></li>
+                        <li><a href="#module3-3">The Common Alternative - 'Nice to meet you.'</a></li>
+                    </ul>
+                </li>
+                <li><a href="#module4">Part 4: The Goodbye - Saying goodbye 👋</a></li>
+                <li><a href="#module5">Part 5: The Question - The Profession 💼</a></li>
+                <li><a href="#module6">Part 6: Making Introductions 🤝</a></li>
+                <li><a href="#module7">Part 7: Addressing People Correctly 🎩</a></li>
+                <li><a href="#module5-1">Formal & Polite Greetings ⏰</a></li>
+                <li><a href="#module6-time">Parts of the Day, Week & Month 🗓️</a></li>
+                <li><a href="#module8">Part 8: The Question - "How was your day?" ☀️</a></li>
+                <li><a href="#daily-activities-table">Common Daily Activities & Duties 📚</a></li>
+            </ul>
+        </div>
+        
+        <div class="card" id="module1">
+            <h2 class="text-blue-aqua">Part 1: The First Contact - The Greeting 🤝</h2>
+            <p class="animated-instruction">Please read and imagine the situation in your mother tongue 👀</p>
+            <img src="https://storage.googleapis.com/g-images-prod/v5-english-immersion-project/receptionist-greeting-hostel.webp" alt="A smiling hotel receptionist greeting a person at a front desk." class="scenario-image">
+            <div class="scenario-box">
+                <p><span class="english-label">English:</span> You're <span class="underline-blue">checking into</span> your <span class="underline-green">hostel</span>. The person <span class="underline-purple">at the front desk</span> <span class="underline-orange">greets</span> you with a smile and says, "Welcome! How are you doing today?"</p><br>
+                <p><span class="portuguese-label">Português:</span> Você está fazendo o check-in no seu hostel. A pessoa na recepção te cumprimenta com um sorriso e diz: "Bem-vindo! Como você está hoje?"</p>
+            </div>
+            <div class="translation-reference">
+                <h4>Quick Reference 📚</h4>
+                <ul>
+                    <li><span class="underline-blue">checking into</span>: fazendo o check-in</li>
+                    <li><span class="underline-green">hostel</span>: albergue</li>
+                    <li><span class="underline-purple">at the front desk</span>: na recepção</li>
+                    <li><span class="underline-orange">greets</span>: cumprimenta</li>
+                </ul>
+            </div>
+            <div class="input-area">
+                <input type="text" id="answer1" placeholder="Type your answer here..." required>
+                <button onclick="checkAnswer('module1')">Submit</button>
+            </div>
+            <div class="response-area" id="response1">
+                <div class="response-section">
+                    <h4 class="text-green-teal">Best Answer:</h4>
+                    <p>"Hi there!"</p>
+                </div>
+                <div class="explanation-box">
+                    <h4 class="text-medium-blue-violet">Explanation:</h4>
+                    <p>In English, it's very common to respond to a greeting, especially in a casual situation like this. The person at the front desk is being polite, not asking for a detailed report of your day. By saying **"Hi there!"**, you are warmly and naturally acknowledging them before moving on to the reason for your visit. <br><br>
+                    <span class="portuguese-explanation">Uma resposta rápida e amigável.</span></p>
+                </div>
+                <div class="association-box">
+                    <h4 class="text-purple-magenta">Brazilian Association:</h4>
+                    <p>This is just like when you respond to "Tudo certo?" with a quick "E aí?" or "Olá!" It's a quick, friendly, and natural way to start the conversation. 😊</p>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Expression</th>
+                            <th>Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Hi! 👋</td>
+                            <td><div class="circle-container"><svg viewBox="0 0 80 80"><circle class="bg-circle" cx="40" cy="40" r="38"></circle><circle class="progress-circle" cx="40" cy="40" r="38" style="--dash-offset: 25.12;"></circle></svg><span class="percentage">90%</span></div></td>
+                        </tr>
+                        <tr>
+                            <td>Hey there! 👋</td>
+                            <td><div class="circle-container"><svg viewBox="0 0 80 80"><circle class="bg-circle" cx="40" cy="40" r="38"></circle><circle class="progress-circle" cx="40" cy="40" r="38" style="--dash-offset: 50.24;"></circle></svg><span class="percentage">80%</span></div></td>
+                        </tr>
+                        <tr>
+                            <td>Hiya! (UK, AUSTRALIA and many other countries) 👋</td>
+                            <td><div class="circle-container"><svg viewBox="0 0 80 80"><circle class="bg-circle" cx="40" cy="40" r="38"></circle><circle class="progress-circle" cx="40" cy="40" r="38" style="--dash-offset: 62.8;"></circle></svg><span class="percentage">75%</span></div></td>
+                        </tr>
+                        <tr>
+                            <td>What's up? (mostly US) 🗣️ pronounced as wha sup</td>
+                            <td><div class="circle-container"><svg viewBox="0 0 80 80"><circle class="bg-circle" cx="40" cy="40" r="38"></circle><circle class="progress-circle" cx="40" cy="40" r="38" style="--dash-offset: 75.36;"></circle></svg><span class="percentage">70%</span></div></td>
+                        </tr>
+                        <tr>
+                            <td>You, alright? or Alright? (UK, Australia, other countries) 🤔</td>
+                            <td><div class="circle-container"><svg viewBox="0 0 80 80"><circle class="bg-circle" cx="40" cy="40" r="38"></circle><circle class="progress-circle" cx="40" cy="40" r="38" style="--dash-offset: 100.48;"></circle></svg><span class="percentage">60%</span></div></td>
+                        </tr>
+                        <tr>
+                            <td>Hello, there! (Classical) 👋</td>
+                            <td><div class="circle-container"><svg viewBox="0 0 80 80"><circle class="bg-circle" cx="40" cy="40" r="38"></circle><circle class="progress-circle" cx="40" cy="40" r="38" style="--dash-offset: 125.6;"></circle></svg><span class="percentage">50%</span></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card" id="module-hello-special">
+            <h2 class="text-blue-aqua">Special Uses for 'Hello' 📞</h2>
+            <p>While **"Hello"** can sometimes be a bit formal for a casual greeting, it is the standard and most common word used in two very specific situations.</p>
+            
+            <div class="scenario-box">
+                <p><span class="english-label">Answering the Phone:</span></p>
+                <p>When you pick up the phone, you should always say **"Hello?"**. This is the standard way to acknowledge the caller, even if you don't know who it is. You can follow it with a question like "Who is this?" or "How can I help you?".</p>
+            </div>
+            
+            <div class="scenario-box">
+                <p><span class="english-label">Formal Email Greetings:</span></p>
+                <p>**"Hello"** is a perfect choice for starting a professional email when "Dear" feels too formal. It is a polite, professional, and universally accepted way to address a coworker, manager, or someone you haven't met before, such as a hiring manager.</p>
+                <p>Example: **"Hello, Maria,"** or **"Hello, hiring team,"**</p>
+            </div>
+        </div>
+        
+        <div class="card" id="module2">
+            <h2 class="text-blue-aqua">Part 2: The First Contact - The Question 🗣️</h2>
+            <p class="animated-instruction">Now, read and imagine the receptionist's question. 👀</p>
+            <img src="https://storage.googleapis.com/g-images-prod/v5-english-immersion-project/tourist-at-desk.webp" alt="A smiling tourist at a front desk." class="scenario-image">
+            <div class="scenario-box">
+                <p><span class="english-label">English:</span> The receptionist smiles as you approach and says, **"Hi there! How are you doing?"** <br><br>
+                <p><span class="portuguese-label">Português:</span> O recepcionista sorri quando você se aproxima e diz: "Olá! Como você está?".</p>
+            </div>
+        </div>
+
+        <div class="card highlight-card" id="highlight-greeting">
+            <h3>Hi there! How are you doing?</h3>
+            <p class="text-green-teal">**Remember:** This phrase is the key to continuing the conversation naturally.</p>
+        </div>
+
+        <div class="card" id="module3">
+            <h2 class="text-blue-aqua">Part 3: The First Contact - The Reply 🤝</h2>
+            <div class="card highlight-card" style="margin-bottom: 20px;">
+                <h3>"I'm doing well, thank you. And you?"</h3>
+                <p class="text-green-teal">**Remember:** This is a key phrase for a polite and natural response.</p>
+            </div>
+            
+            <div class="card highlight-card" style="margin-bottom: 20px;">
+                <h3>"Not too bad."</h3>
+                <p class="text-green-teal">**Remember:** A common, casual way to say you are feeling okay. It's a classic English understatement.</p>
+            </div>
+
+            <div class="card highlight-card" style="margin-bottom: 20px;">
+                <h3>"I'm doing great, thanks, and what about yourself?"</h3>
+                <p class="text-green-teal">**Remember:** This is a very polite and formal way to ask "how are you?". Using **"yourself"** is a respectful way to refer to the other person, similar to "O Sr" or "A Sra" in Portuguese.</p>
+            </div>
+
+            <div class="response-area" id="response3">
+                <div class="explanation-box">
+                    <h4 class="text-medium-blue-violet">Explanation:</h4>
+                    <p>In English, it's very polite and common to not only answer the question but also to ask how the other person is doing. The phrase **"I'm doing well, thank you. And you?"** is a perfect response that is both polite and natural. <br><br>
+                    <span class="portuguese-explanation">É a maneira mais completa e educada de responder, pois você responde à pergunta e devolve a mesma pergunta para a outra pessoa.</span></p>
+                </div>
+                <div class="association-box">
+                    <h4 class="text-purple-magenta">Brazilian Association:</h4>
+                    <p>This is just like saying **"Tudo bem, obrigado. E você?"** or **"Estou bem, e você?"** in Brazil. It's the standard, reciprocal exchange of greetings. 🇧🇷</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="module3-1">
+            <h2 class="text-blue-aqua">Part 3.1: The Formal Greeting - "How do you do?"</h2>
+            <div class="scenario-box">
+                <p><span class="english-label">English:</span> This phrase is a very formal, traditional greeting used when you meet someone for the first time in a professional or social setting.</p><br>
+                <p><span class="portuguese-label">Português:</span> Esta frase é uma saudação formal e tradicional usada quando você conhece alguém pela primeira vez em um ambiente profissional ou social.</p>
+            </div>
+            <div class="highlight-card" style="margin-top: 20px;">
+                <h3>"How do you do?"</h3>
+                <p class="text-green-teal">**The response is usually the same phrase!**</p>
+            </div>
+            <div class="explanation-box">
+                <h4 class="text-medium-blue-violet">Explanation:</h4>
+                <p>This is not a question about your well-being, but a polite way of saying "Hello." The expected response is to simply say "How do you do?" back. <br><br>
+                <span class="portuguese-explanation">Não é uma pergunta sobre o seu bem-estar, mas uma forma educada de dizer "Olá". A resposta esperada é simplesmente repetir "How do you do?".</span></p>
+            </div>
+        </div>
+        
+        <div class="card" id="module3-2">
+            <h2 class="text-blue-aqua">Part 3.2: The Formal Reply - 'Pleased to meet you.'</h2>
+            <div class="highlight-card" style="margin-bottom: 20px;">
+                <h3>"Pleased to meet you."</h3>
+                <p class="text-green-teal">**Remember:** This is a classic, polite response often used after a formal greeting like "How do you do?".</p>
+            </div>
+            <div class="explanation-box">
+                <h4 class="text-medium-blue-violet">Explanation:</h4>
+                <p>It can also be followed by **"Pleased to meet you."**<br><br>
+                <span class="portuguese-explanation">Pode também ser seguido por "Prazer em te conhecer."</span></p>
+            </div>
+        </div>
+        
+        <div class="card" id="module3-3">
+            <h2 class="text-blue-aqua">Part 3.3: The Common Alternative - 'Nice to meet you.'</h2>
+            <div class="highlight-card" style="margin-bottom: 20px;">
+                <h3>"Nice to meet you."</h3>
+                <p class="text-green-teal">**Remember:** It is also a possible greeting, but much more common among **foreigners**.</p>
+            </div>
+            <div class="explanation-box">
+                <h4 class="text-medium-blue-violet">Explanation:</h4>
+                <p>While grammatically correct and widely understood, native English speakers typically use **"Pleased to meet you"** in formal settings, as it sounds more elegant and natural. **"Nice to meet you"** is a phrase that is often taught in non-native English programs, making it a very common choice for people learning the language. Using **"Pleased to meet you"** will make you sound more like a native speaker.
+                <br><br>
+                <span class="portuguese-explanation">Embora gramaticalmente correta e amplamente compreendida, falantes nativos de inglês geralmente usam "Pleased to meet you" em ambientes formais, pois soa mais elegante e natural. "Nice to meet you" é uma frase frequentemente ensinada em cursos de inglês para estrangeiros, tornando-a uma escolha muito comum para quem está aprendendo o idioma. Usar "Pleased to meet you" fará com que você soe mais como um falante nativo.</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="card" id="module4">
+            <h2 class="text-blue-aqua">Part 4: The Goodbye - Saying goodbye 👋</h2>
+            <div class="highlight-card" style="margin-bottom: 20px;">
+                <h3>"See you, take care"</h3>
+                <p class="text-green-teal">**Remember:** This phrase is a natural and friendly way to end a conversation.</p>
+            </div>
+            <div class="explanation-box">
+                <h4 class="text-medium-blue-violet">Explanation:</h4>
+                <p>This is a very common and warm way to say goodbye to someone, especially if you have had a positive interaction and there's a possibility you might see them again in the future. "See you" is a shortened version of "I'll see you later," and "take care" is a genuine wish for the person's well-being.
+                <br><br>
+                <span class="portuguese-explanation">É uma maneira muito comum e afetuosa de se despedir de alguém, especialmente se você teve uma interação positiva e há a possibilidade de vê-lo novamente no futuro. "See you" é uma versão abreviada de "I'll see you later" (Eu te vejo mais tarde), e "take care" é um desejo sincero de bem-estar para a pessoa.</span>
+                </p>
+            </div>
+            <div class="association-box">
+                <h4 class="text-purple-magenta">Brazilian Association:</h4>
+                <p>This is like saying **"Até mais, se cuida!"** in Portuguese. It's casual, friendly, and shows that you care about the person's well-being. 🇧🇷</p>
+            </div>
+            
+            <div class="card highlight-card" style="margin-top: 20px;">
+                <h3>Ciya</h3>
+                <p class="text-green-teal">**Meaning:** goodbye</p>
+            </div>
+            <div class="explanation-box">
+                <h4 class="text-medium-blue-violet">Explanation:</h4>
+                <p>**Ciya** is a phonetic spelling of **"See ya"** and is an informal and very casual way to say goodbye. It's often used among friends, family, or people you know well. It implies that you will see the person again, even if it's not a set time.
+                <br><br>
+                <span class="portuguese-explanation">**Ciya** é uma grafia fonética de **"See ya"** e é uma forma informal e muito casual de dizer adeus. É frequentemente usada entre amigos, familiares ou pessoas que você conhece bem. Implica que você verá a pessoa novamente, mesmo que não seja em um horário definido.</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="animated-gradient-box">
+            <div class="card" style="margin: 0;">
+                <h2 class="text-blue-aqua">Practice: Conversation Mind Working 🤔</h2>
+                <p>Here are two simple conversations to help you practice and remember the correct phrases.</p>
+                
+                <div class="dialogue-box">
+                    <h3 class="text-green-teal">Dialogue 1</h3>
+                    <p class="person1">**Hi, there! How are you doing?**</p>
+                    <p class="person2">**Not too bad! thanks and what about yourself?**</p>
+                </div>
+
+                <div class="dialogue-box" style="margin-top: 20px;">
+                    <h3 class="text-green-teal">Dialogue 2</h3>
+                    <p class="person1">**Hi Jane! How are you doing?**</p>
+                    <p class="person2">**Not too bad! thanks and what about yourself?**</p>
+                </div>
+
+                <div class="explanation-box" style="margin-top: 20px;">
+                    <p><strong>Observation:</strong> Notice that in the first dialogue, the greeting is general and doesn't use a name, but the response is still natural and complete. In the second dialogue, a name is used, which is common when you know the person.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" id="module5">
+            <h2 class="text-blue-aqua">Part 5: The Question - The Profession 💼</h2>
+            <div class="highlight-card" style="margin-bottom: 20px;">
+                <h3>"What do you do?"</h3>
+                <p class="text-green-teal">**Meaning:** What is your job/profession?</p>
+            </div>
+            <div class="explanation-box">
+                <h4 class="text-medium-blue-violet">Explanation:</h4>
+                <p>This is a direct and common question used to ask about someone's profession or job. It's a fundamental part of getting to know someone in many English-speaking cultures.
+                <br><br>
+                <span class="portuguese-explanation">Esta é uma pergunta direta e comum usada para saber a profissão ou o trabalho de alguém. É uma parte fundamental para conhecer alguém em muitas culturas de língua inglesa.</span>
+                </p>
+            </div>
+            <div class="highlight-card" style="margin-top: 20px;">
+                <h3>"What do you do, yourself?"</h3>
+                <p class="text-green-teal">**Meaning:** And what is your job/profession?</p>
+            </div>
+            <div class="explanation-box">
+                <h4 class="text-medium-blue-violet">Explanation:</h4>
+                <p>This phrase is used to politely and naturally return the question to the other person after you have answered it yourself. Adding **"yourself"** is a very common and natural conversational pattern.
+                <br><br>
+                <span class="portuguese-explanation">Esta frase é usada para devolver a pergunta de forma educada e natural para a outra pessoa, depois de você mesmo ter respondido. Adicionar **"yourself"** é um padrão de conversa muito comum e natural.</span>
+                </p>
+            </div>
+            <div class="dialogue-box">
+                <h3 class="text-green-teal">Example</h3>
+                <p class="person1">"I work as a marketing manager. **What do you do, yourself?**"</p>
+                <p class="person2">"I'm a teacher."</p>
+            </div>
+        </div>
+
+        <div class="card" id="module6">
+            <h2 class="text-blue-aqua">Part 6: Making Introductions 🤝</h2>
+            <div class="highlight-card" style="margin-bottom: 20px;">
+                <h3>"Allow me to introduce you to my boss, Mr. Kieffer."</h3>
+                <p class="text-green-teal">**Meaning:** A formal and respectful way to introduce someone.</p>
+            </div>
+            <div class="explanation-box">
+                <h4 class="text-medium-blue-violet">Explanation:</h4>
+                <p>The phrase **"Allow me to introduce you"** is a very polite and traditional way to make an introduction. It is commonly used in business or formal social situations. Using the title **"Mr."** and the person's last name (**"Kieffer"**) is standard practice in formal introductions, showing respect and professionalism.
+                <br><br>
+                <span class="portuguese-explanation">A frase **"Allow me to introduce you"** é uma forma muito educada e tradicional de fazer uma apresentação. É comumente usada em situações de negócios ou sociais formais. Usar o título **"Mr."** e o sobrenome da pessoa (**"Kieffer"**) é uma prática padrão em apresentações formais, demonstrando respeito e profissionalismo.</span>
+                </p>
+            </div>
+            <div class="dialogue-box">
+                <h3 class="text-green-teal">Example</h3>
+                <p class="person1">"I'd like you to meet my colleague, Mr. Kieffer."</p>
+                <p class="person2">"Pleased to meet you, Mr. Kieffer."</p>
+            </div>
+            <div class="association-box">
+                <h4 class="text-purple-magenta">Cultural Note: Using Surnames</h4>
+                <p>In many English-speaking countries, it's common to address someone you've just met in a formal context by their title (**Mr., Mrs., Ms., Dr.**) and their surname. This is considered a sign of respect and politeness until you are invited to use their first name. It's a key difference from Brazilian culture, where first names are often used immediately. 🇧🇷</p>
+            </div>
+        </div>
+
+        <div class="card" id="module7">
+            <h2 class="text-blue-aqua">Part 7: Addressing People Correctly 🎩</h2>
+            <div class="explanation-box" style="margin-bottom: 20px;">
+                <h4 class="text-medium-blue-violet">Formal Titles</h4>
+                <ul class="title-list">
+                    <li class="title-list-item">
+                        <h4><strong>Sir</strong> (no name)</h4>
+                        <p>A very formal, respectful way to address a man, especially someone in a position of authority or a stranger, when you don't know their name.</p>
+                        <p class="example">"Excuse me, **Sir**, may I help you?"</p>
+                    </li>
+                    <li class="title-list-item">
+                        <h4><strong>Mr.</strong> (with surname)</h4>
+                        <p>Used for men, regardless of marital status, followed by their surname.</p>
+                        <p class="example">"Hello, **Mr. Kieffer**."</p>
+                    </li>
+                    <li class="title-list-item">
+                        <h4><strong>Madam / Ma'am</strong> (no name)</h4>
+                        <p>A very formal, respectful way to address a woman, especially a stranger or someone in a position of authority, when you don't know their name. "Ma'am" is a shortened, more common version, especially in the US.</p>
+                        <p class="example">"Yes, **Madam**." / "Thank you, **Ma'am**."</p>
+                    </li>
+                    <li class="title-list-item">
+                        <h4><strong>Mrs.</strong> (with surname)</h4>
+                        <p>Used for a married woman, followed by her husband's or her own surname.</p>
+                        <p class="example">"It's a pleasure, **Mrs. Smith**."</p>
+                    </li>
+                    <li class="title-list-item">
+                        <h4><strong>Miss</strong> (with surname)</h4>
+                        <p>Used for an unmarried woman, followed by her surname.</p>
+                        <p class="example">"Can I help you, **Miss Jones**?"</p>
+                    </li>
+                    <li class="title-list-item">
+                        <h4><strong>Ms.</strong> (with surname)</h4>
+                        <p>Used for a woman regardless of her marital status, followed by her surname. It's the most common and polite choice when you don't know if she is married or if she has a preference.</p>
+                        <p class="example">"Good morning, **Ms. Davis**."</p>
+                    </li>
+                    <li class="title-list-item">
+                        <h4><strong>Dr.</strong> (with surname)</h4>
+                        <p>Used for someone with a doctorate degree (medical doctor, Ph.D., etc.), followed by their surname.</p>
+                        <p class="example">"Thank you for your advice, **Dr. Evans**."</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="explanation-box" style="margin-bottom: 20px;">
+                <h4 class="text-medium-blue-violet">Addressing Specific Professions</h4>
+                <p>In English-speaking countries, people are often addressed by their professional title to show respect. Here are some examples:</p>
+                <table class="title-table">
+                    <thead>
+                        <tr>
+                            <th>Profession</th>
+                            <th>How to Address</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lawyer</td>
+                            <td>**Mr. / Ms. [Surname]**</td>
+                            <td>Do not use "doctor," "lawyer," or "attorney" as a title when addressing them directly.</td>
+                        </tr>
+                        <tr>
+                            <td>Nurse</td>
+                            <td>**Mr. / Ms. [Surname]**</td>
+                            <td>While "Nurse" is a common term, it is not used as a formal title for direct address. Use "Mr. / Ms." followed by their last name.</td>
+                        </tr>
+                        <tr>
+                            <td>Police Officer</td>
+                            <td>**Officer** or **Officer [Surname]**</td>
+                            <td>Can also be **Sir** or **Ma'am**.</td>
+                        </tr>
+                        <tr>
+                            <td>Teacher (at school)</td>
+                            <td>**Mr. / Mrs. / Ms. [Surname]**</td>
+                            <td>Using "Teacher" alone is usually for young children.</td>
+                        </tr>
+                        <tr>
+                            <td>Big Boss (in a company)</td>
+                            <td>**Mr. / Ms. [Surname]** or **First Name**</td>
+                            <td>Depends on the company culture. It's best to start with the surname unless they invite you to use their first name.</td>
+                        </tr>
+                        <tr>
+                            <td>President of a Country</td>
+                            <td>**Mr. President** or **Madam President**</td>
+                            <td>Extremely formal. Never use "the" before "President."</td>
+                        </tr>
+                        <tr>
+                            <td>Mayor</td>
+                            <td>**Mr. Mayor** or **Madam Mayor**</td>
+                            <td>A common and respectful way to address them.</td>
+                        </tr>
+                        <tr>
+                            <td>Dentist / Doctor</td>
+                            <td>**Dr. [Surname]**</td>
+                            <td>Always use "Dr." for a medical professional.</td>
+                        </tr>
+                        <tr>
+                            <td>At a Reception (company/hospital/hotel)</td>
+                            <td>**Sir** or **Ma'am**</td>
+                            <td>Start with a polite "Excuse me," and then use "Sir" or "Ma'am" to get their attention.</td>
+                        </tr>
+                        <tr>
+                            <td>Cleaner (in a hotel)</td>
+                            <td>**Excuse me, do you mind if I pass?**</td>
+                            <td>It is rude to address a person by their job title, so the best way is to address them politely.</td>
+                        </tr>
+                        <tr>
+                            <td>Security Guard</td>
+                            <td>**Officer** or **Sir** / **Ma'am**</td>
+                            <td>This is a sign of respect and can be used in the same way as a Police Officer.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card" id="module5-1">
+            <h2 class="text-blue-aqua">Formal & Polite Greetings ⏰</h2>
+            <p>These greetings are universally polite and appropriate for any time of day, especially in formal settings like business meetings or interactions with strangers. Think of them as the go-to, safe choice. ✅</p>
+            <ul>
+                <li><span class="morning-color"><strong>Good morning</strong></span> ☀️: Use from midnight (00:00) until noon.</li>
+                <li><span class="afternoon-color"><strong>Good afternoon</strong></span> ☕️: Use from noon until around 5 or 6 p.m.</li>
+                <li><span class="evening-color"><strong>Good evening</strong></span> 🌙: Use from 6 p.m. until you go to sleep.</li>
+            </ul>
+            <p><strong>Important Note:</strong> **"Good evening"** is used only to greet someone when you meet them. In contrast, **"Good night"** is used only to say goodbye, either when you are leaving for the night or when someone is going to bed. ⚠️</p>
+            <div class="association-box">
+                <h4 class="text-purple-magenta">Brazilian Association:</h4>
+                <p>These work just like **"Bom dia,"** **"Boa tarde,"** and **"Boa noite"** in Brazil. They are the standard, respectful way to greet someone based on the time of day. 🇧🇷</p>
+            </div>
+        </div>
+
+        <div class="animated-gradient-box" id="module6-time">
+            <div class="card" style="margin: 0;">
+                <h2 class="text-blue-aqua">Parts of the Day, Week & Month 🗓️</h2>
+                <p>To talk about when something happens, you must use the correct preposition. Pay close attention to the highlighted words! 👀</p>
+                
+                <h4><span class="preposition-in">Preposition: in</span></h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parts of the Day ☀️</th>
+                            <th>Months 📆</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="preposition-in">in</span> the morning</td><td><span class="preposition-in">in</span> January</td></tr>
+                        <tr><td><span class="preposition-in">in</span> the afternoon</td><td><span class="preposition-in">in</span> February</td></tr>
+                        <tr><td><span class="preposition-in">in</span> the evening</td><td><span class="preposition-in">in</span> March</td></tr>
+                    </tbody>
+                </table>
+                <br>
+                <h4><span class="preposition-on">Preposition: on</span></h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Days of the Week 📅</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="preposition-on">on</span> Monday</td></tr>
+                        <tr><td><span class="preposition-on">on</span> Tuesday</td></tr>
+                        <tr><td><span class="preposition-on">on</span> Wednesday</td></tr>
+                        <tr><td><span class="preposition-on">on</span> Thursday</td></tr>
+                        <tr><td><span class="preposition-on">on</span> Friday</td></tr>
+                        <tr><td><span class="preposition-on">on</span> Saturday</td></tr>
+                        <tr><td><span class="preposition-on">on</span> Sunday</td></tr>
+                    </tbody>
+                </table>
+                <br>
+                <h4><span class="preposition-at">Preposition: at</span></h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Specific Time of Day ⏰</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="preposition-at">at</span> night</td></tr>
+                        <tr><td><span class="preposition-at">at</span> noon</td></tr>
+                        <tr><td><span class="preposition-at">at</span> midnight</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card" id="module8">
+            <h2 class="text-blue-aqua">Part 8: The Question - "How was your day?" ☀️</h2>
+            <p>This is a very common and friendly way to start a conversation, especially with people you know well. It shows genuine interest in the other person's life and gives them a chance to share about their recent experiences. It's often asked at the end of the workday or when you get home.</p>
+
+            <div class="scenario-box" style="margin-top: 20px;">
+                <h4 class="text-green-teal">Common Questions and Responses</h4>
+                <p>These questions are most often used with friends, family, and close colleagues. They show you care and are a great way to start a quick chat.</p>
+                
+                <p><strong>Questions:</strong></p>
+                <p>"How was your day?" | "How's your day going?"</p>
+                <p>"How did your day go?" | "How did your meeting go?"</p>
+                
+                <p><strong>Answers:</strong></p>
+                <div class="spaced-answer">"It was great, thanks! How about yours?"</div>
+                <div class="spaced-answer">"It went well, thanks for asking! And you?"</div>
+                <div class="spaced-answer">"Not bad, a little tired though."</div>
+                <div class="spaced-answer">"It was a bit rough, to be honest. But I'm fine now."</div>
+            </div>
+            
+            <div class="card highlight-card" style="margin-top: 20px;">
+                <h3>The Best Answer:</h3>
+                <p>"It was great, thanks! How about yours?"</p>
+                <p class="text-green-teal">This is a polite, positive, and reciprocal answer that works in most situations. It's the perfect response that is both polite and natural. <br><br>
+                <span class="portuguese-explanation">É a maneira mais completa e educada de responder, pois você responde à pergunta e devolve a mesma pergunta para a outra pessoa.</span></p>
+            </div>
+
+            <div class="detailed-answer-box">
+                <h4>More Detailed Answers to "How was your day?"</h4>
+                <p>When you want to give a more personal and detailed answer, you can include specific activities. Here are some examples:</p>
+                
+                <ul style="list-style: none; padding: 0;">
+                    <li>
+                        <p>1. <span style="color: #43C6E9;">**"It had a lot on! I ran some errands, I caught up on my favorite TV series, I did the house chores, and finished up a big project for work."**</span></p>
+                        <p style="margin-top: 5px;"><span style="color: #F7DC6F;">"Foi bem corrido! Fiz umas coisinhas na rua, coloquei minhas séries em dia, fiz as tarefas de casa e finalizei um projeto grande do trabalho."</span></p>
+                    </li>
+                    <li style="margin-top: 20px;">
+                        <p>2. <span style="color: #50DBB3;">**"It was busy, to be honest. I had to fill up the tank, bring the kids to football practice, pay a visit to my parents, tidy the mess in the garden, and then I went grocery shopping."**</span></p>
+                        <p style="margin-top: 5px;"><span style="color: #D085E5;">"Foi um dia corrido, para ser honesto. Eu tive que encher o tanque, levar as crianças para o treino de futebol, fazer uma visita aos meus pais, arrumar a bagunça no jardim e depois fui fazer compras no supermercado."</span></p>
+                    </li>
+                    <li style="margin-top: 20px;">
+                        <p>3. <span style="color: #F7DC6F;">**"My weekend was hectic! I moved in to a new apartment, I am in bits today, I got some new furniture in as well."**</span></p>
+                        <p style="margin-top: 5px;"><span style="color: #7D97F4;">"Meu fim de semana foi caótico! Me mudei para um apartamento novo, estou exausto hoje, e ainda comprei alguns móveis novos."</span></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card new-table-container" id="daily-activities-table">
+            <h2 class="text-blue-aqua">Common Daily Activities & Duties 📚</h2>
+            <p>This table lists a variety of common activities for individuals, parents, and students, with their Brazilian Portuguese translations. </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="english-col">English (US/UK)</th>
+                        <th class="portuguese-col">Português (Brasil)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>To do the laundry</td>
+                        <td>Lavar a roupa</td>
+                    </tr>
+                    <tr>
+                        <td>To do the dishes / To wash the dishes</td>
+                        <td>Lavar a louça</td>
+                    </tr>
+                    <tr>
+                        <td>To take out the trash</td>
+                        <td>Tirar o lixo</td>
+                    </tr>
+                    <tr>
+                        <td>To do the vacuuming / To vacuum</td>
+                        <td>Passar aspirador de pó</td>
+                    </tr>
+                    <tr>
+                        <td>To tidy up the room / To clean the room</td>
+                        <td>Arrumar o quarto / Limpar o quarto</td>
+                    </tr>
+                    <tr>
+                        <td>To make the bed</td>
+                        <td>Arrumar a cama</td>
+                    </tr>
+                    <tr>
+                        <td>To cook dinner</td>
+                        <td>Cozinhar o jantar</td>
+                    </tr>
+                    <tr>
+                        <td>To go grocery shopping</td>
+                        <td>Fazer compras no supermercado</td>
+                    </tr>
+                    <tr>
+                        <td>To run some errands</td>
+                        <td>Resolver algumas pendências / Fazer algumas coisinhas na rua</td>
+                    </tr>
+                    <tr>
+                        <td>To pay the bills</td>
+                        <td>Pagar as contas</td>
+                    </tr>
+                    <tr>
+                        <td>To go to work</td>
+                        <td>Ir para o trabalho</td>
+                    </tr>
+                    <tr>
+                        <td>To go to class / To go to school</td>
+                        <td>Ir para a aula / Ir para a escola</td>
+                    </tr>
+                    <tr>
+                        <td>To study for an exam</td>
+                        <td>Estudar para uma prova</td>
+                    </tr>
+                    <tr>
+                        <td>To write an essay</td>
+                        <td>Escrever uma redação</td>
+                    </tr>
+                    <tr>
+                        <td>To pick up the kids from school</td>
+                        <td>Pegar as crianças na escola</td>
+                    </tr>
+                    <tr>
+                        <td>To take the kids to school</td>
+                        <td>Levar as crianças para a escola</td>
+                    </tr>
+                    <tr>
+                        <td>To change the baby's nappy (UK) / diaper (US)</td>
+                        <td>Trocar a fralda do bebê</td>
+                    </tr>
+                    <tr>
+                        <td>To bathe the kids / To give the kids a bath</td>
+                        <td>Dar banho nas crianças</td>
+                    </tr>
+                    <tr>
+                        <td>To put the kids to bed</td>
+                        <td>Colocar as crianças para dormir</td>
+                    </tr>
+                    <tr>
+                        <td>To feed the cat / dog</td>
+                        <td>Alimentar o gato / cachorro</td>
+                    </tr>
+                    <tr>
+                        <td>To take the dog for a walk</td>
+                        <td>Levar o cachorro para passear</td>
+                    </tr>
+                    <tr>
+                        <td>To mow the lawn</td>
+                        <td>Cortar a grama</td>
+                    </tr>
+                    <tr>
+                        <td>To pay a visit to my parents / To visit my parents</td>
+                        <td>Fazer uma visita aos meus pais / Visitar meus pais</td>
+                    </tr>
+                    <tr>
+                        <td>To fill up the tank</td>
+                        <td>Encher o tanque</td>
+                    </tr>
+                    <tr>
+                        <td>To go to the gym</td>
+                        <td>Ir para a academia</td>
+                    </tr>
+                    <tr>
+                        <td>To catch up on my favorite TV series</td>
+                        <td>Colocar minhas séries de TV favoritas em dia</td>
+                    </tr>
+                    <tr>
+                        <td>To sort the recycling (UK) / To do the recycling (US/CA)</td>
+                        <td>Separar a reciclagem</td>
+                    </tr>
+                    <tr>
+                        <td>To shovel the driveway (US/CA) / To clear the path (UK)</td>
+                        <td>Tirar a neve da entrada de casa</td>
+                    </tr>
+                    <tr>
+                        <td>To pay taxes</td>
+                        <td>Pagar os impostos</td>
+                    </tr>
+                    <tr>
+                        <td>To file my taxes (US/CA) / To submit my tax return (UK)</td>
+                        <td>Fazer a declaração do imposto de renda</td>
+                    </tr>
+                    <tr>
+                        <td>To get your driver's license (US/CA) / To get your driving licence (UK)</td>
+                        <td>Tirar a carteira de motorista</td>
+                    </tr>
+                    <tr>
+                        <td>To have a BBQ (US/CA) / To have a barbie (AUS/NZ) / To have a churrasco (BR)</td>
+                        <td>Fazer um churrasco</td>
+                    </tr>
+                    <tr>
+                        <td>To go to the mall (US/CA) / To go to the shopping centre (UK) / To go to the shopping (BR)</td>
+                        <td>Ir ao shopping</td>
+                    </tr>
+                    <tr>
+                        <td>To do a presentation / To present a paper</td>
+                        <td>Fazer uma apresentação / Apresentar um trabalho</td>
+                    </tr>
+                    <tr>
+                        <td>To pull an all-nighter</td>
+                        <td>Passar a noite em claro / Virar a noite estudando</td>
+                    </tr>
+                    <tr>
+                        <td>To take a gap year</td>
+                        <td>Tirar um ano sabático</td>
+                    </tr>
+                    <tr>
+                        <td>To work from home</td>
+                        <td>Trabalhar de casa / Em regime de home office</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        function checkAnswer(moduleId) {
+            const responseArea = document.getElementById(`response${moduleId.slice(-1)}`);
+            responseArea.style.display = 'block';
+
+            // Calculate stroke-dashoffset for each circle based on percentage
+            const circles = responseArea.querySelectorAll('.progress-circle');
+            circles.forEach(circle => {
+                const percentage = parseFloat(circle.parentElement.querySelector('.percentage').textContent);
+                const circumference = 2 * Math.PI * 38; // 2 * PI * r
+                const dashOffset = circumference - (percentage / 100) * circumference;
+                circle.style.setProperty('--dash-offset', dashOffset);
+            });
+        }
+        
+        // This function is now used to make sure the percentages are correctly animated on page load for the new modules
+        document.addEventListener("DOMContentLoaded", () => {
+            const newModules = ['response1'];
+            newModules.forEach(id => {
+                const responseArea = document.getElementById(id);
+                if (responseArea) {
+                    const circles = responseArea.querySelectorAll('.progress-circle');
+                    circles.forEach(circle => {
+                        const percentage = parseFloat(circle.parentElement.querySelector('.percentage').textContent);
+                        const circumference = 2 * Math.PI * 38;
+                        const dashOffset = circumference - (percentage / 100) * circumference;
+                        circle.style.setProperty('--dash-offset', dashOffset);
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
